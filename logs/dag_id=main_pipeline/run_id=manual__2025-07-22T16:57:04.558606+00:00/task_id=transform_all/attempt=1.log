@@ -1,0 +1,28 @@
+[2025-07-22T16:57:07.122+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: main_pipeline.transform_all manual__2025-07-22T16:57:04.558606+00:00 [queued]>
+[2025-07-22T16:57:07.127+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: main_pipeline.transform_all manual__2025-07-22T16:57:04.558606+00:00 [queued]>
+[2025-07-22T16:57:07.127+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-07-22T16:57:07.136+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): transform_all> on 2025-07-22 16:57:04.558606+00:00
+[2025-07-22T16:57:07.142+0000] {standard_task_runner.py:60} INFO - Started process 199 to run task
+[2025-07-22T16:57:07.144+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'main_pipeline', 'transform_all', 'manual__2025-07-22T16:57:04.558606+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmp774yh5vz']
+[2025-07-22T16:57:07.145+0000] {standard_task_runner.py:88} INFO - Job 11: Subtask transform_all
+[2025-07-22T16:57:07.173+0000] {task_command.py:423} INFO - Running <TaskInstance: main_pipeline.transform_all manual__2025-07-22T16:57:04.558606+00:00 [running]> on host bf2339095885
+[2025-07-22T16:57:07.218+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='main_pipeline' AIRFLOW_CTX_TASK_ID='transform_all' AIRFLOW_CTX_EXECUTION_DATE='2025-07-22T16:57:04.558606+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='manual__2025-07-22T16:57:04.558606+00:00'
+[2025-07-22T16:57:07.238+0000] {logging_mixin.py:188} INFO - ✅ Datos transformados (últimos): [{'base': 'MXN', 'target': 'EUR', 'date': '2025-07-22', 'rate': 0.04582, 'previous_rate': None, 'change': None, 'change_pct': None}, {'base': 'MXN', 'target': 'JPY', 'date': '2025-07-22', 'rate': 7.8883, 'previous_rate': None, 'change': None, 'change_pct': None}] ...
+[2025-07-22T16:57:07.263+0000] {logging_mixin.py:188} INFO - Datos transformados (históricos): [{'base': 'EUR', 'target': 'JPY', 'date': '2023-12-29', 'rate': 156.33, 'previous_rate': None, 'change': None, 'change_pct': None}, {'base': 'EUR', 'target': 'MXN', 'date': '2023-12-29', 'rate': 18.7231, 'previous_rate': None, 'change': None, 'change_pct': None}, {'base': 'EUR', 'target': 'USD', 'date': '2023-12-29', 'rate': 1.105, 'previous_rate': None, 'change': None, 'change_pct': None}] ...
+[2025-07-22T16:57:07.268+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/src/frankfurter/transform.py", line 124, in transform_all
+    transform_crypto(ti)
+  File "/opt/airflow/src/frankfurter/transform.py", line 85, in transform_crypto
+    date = datetime.now().strftime("%Y-%m-%d")
+NameError: name 'datetime' is not defined
+[2025-07-22T16:57:07.272+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=main_pipeline, task_id=transform_all, execution_date=20250722T165704, start_date=20250722T165707, end_date=20250722T165707
+[2025-07-22T16:57:07.279+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 11 for task transform_all (name 'datetime' is not defined; 199)
+[2025-07-22T16:57:07.316+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-07-22T16:57:07.330+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check

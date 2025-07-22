@@ -1,0 +1,182 @@
+[2025-07-22T16:52:11.224+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [queued]>
+[2025-07-22T16:52:11.230+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [queued]>
+[2025-07-22T16:52:11.231+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-07-22T16:52:11.238+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): transform_all> on 2025-07-21 00:00:00+00:00
+[2025-07-22T16:52:11.243+0000] {standard_task_runner.py:60} INFO - Started process 199 to run task
+[2025-07-22T16:52:11.246+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'main_pipeline', 'transform_all', 'scheduled__2025-07-21T00:00:00+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpw1ffx0z0']
+[2025-07-22T16:52:11.248+0000] {standard_task_runner.py:88} INFO - Job 11: Subtask transform_all
+[2025-07-22T16:52:11.278+0000] {task_command.py:423} INFO - Running <TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [running]> on host 37f452463ac0
+[2025-07-22T16:52:11.325+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='main_pipeline' AIRFLOW_CTX_TASK_ID='transform_all' AIRFLOW_CTX_EXECUTION_DATE='2025-07-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-07-21T00:00:00+00:00'
+[2025-07-22T16:52:11.326+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/src/frankfurter/transform.py", line 122, in transform_all
+    transform_latest(ti)
+  File "/opt/airflow/src/frankfurter/transform.py", line 2, in transform_latest
+    latest_data = ti.xcom_pull(tasks_ids="extract_latest", key="latest_rates")
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/utils/session.py", line 79, in wrapper
+    return func(*args, session=session, **kwargs)
+TypeError: xcom_pull() got an unexpected keyword argument 'tasks_ids'
+[2025-07-22T16:52:11.331+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=main_pipeline, task_id=transform_all, execution_date=20250721T000000, start_date=20250722T165211, end_date=20250722T165211
+[2025-07-22T16:52:11.338+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 11 for task transform_all (xcom_pull() got an unexpected keyword argument 'tasks_ids'; 199)
+[2025-07-22T16:52:11.378+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-07-22T16:52:11.394+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-07-22T16:57:07.122+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [queued]>
+[2025-07-22T16:57:07.127+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [queued]>
+[2025-07-22T16:57:07.127+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-07-22T16:57:07.137+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): transform_all> on 2025-07-21 00:00:00+00:00
+[2025-07-22T16:57:07.142+0000] {standard_task_runner.py:60} INFO - Started process 198 to run task
+[2025-07-22T16:57:07.144+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'main_pipeline', 'transform_all', 'scheduled__2025-07-21T00:00:00+00:00', '--job-id', '10', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpr2wntf5i']
+[2025-07-22T16:57:07.145+0000] {standard_task_runner.py:88} INFO - Job 10: Subtask transform_all
+[2025-07-22T16:57:07.174+0000] {task_command.py:423} INFO - Running <TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [running]> on host bf2339095885
+[2025-07-22T16:57:07.218+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='main_pipeline' AIRFLOW_CTX_TASK_ID='transform_all' AIRFLOW_CTX_EXECUTION_DATE='2025-07-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-07-21T00:00:00+00:00'
+[2025-07-22T16:57:07.238+0000] {logging_mixin.py:188} INFO - ✅ Datos transformados (últimos): [{'base': 'MXN', 'target': 'EUR', 'date': '2025-07-22', 'rate': 0.04582, 'previous_rate': None, 'change': None, 'change_pct': None}, {'base': 'MXN', 'target': 'JPY', 'date': '2025-07-22', 'rate': 7.8883, 'previous_rate': None, 'change': None, 'change_pct': None}] ...
+[2025-07-22T16:57:07.262+0000] {logging_mixin.py:188} INFO - Datos transformados (históricos): [{'base': 'EUR', 'target': 'JPY', 'date': '2023-12-29', 'rate': 156.33, 'previous_rate': None, 'change': None, 'change_pct': None}, {'base': 'EUR', 'target': 'MXN', 'date': '2023-12-29', 'rate': 18.7231, 'previous_rate': None, 'change': None, 'change_pct': None}, {'base': 'EUR', 'target': 'USD', 'date': '2023-12-29', 'rate': 1.105, 'previous_rate': None, 'change': None, 'change_pct': None}] ...
+[2025-07-22T16:57:07.267+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/src/frankfurter/transform.py", line 124, in transform_all
+    transform_crypto(ti)
+  File "/opt/airflow/src/frankfurter/transform.py", line 85, in transform_crypto
+    date = datetime.now().strftime("%Y-%m-%d")
+NameError: name 'datetime' is not defined
+[2025-07-22T16:57:07.272+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=main_pipeline, task_id=transform_all, execution_date=20250721T000000, start_date=20250722T165707, end_date=20250722T165707
+[2025-07-22T16:57:07.278+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 10 for task transform_all (name 'datetime' is not defined; 198)
+[2025-07-22T16:57:07.316+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-07-22T16:57:07.330+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-07-22T17:01:39.544+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [queued]>
+[2025-07-22T17:01:39.550+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [queued]>
+[2025-07-22T17:01:39.551+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-07-22T17:01:39.559+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): transform_all> on 2025-07-21 00:00:00+00:00
+[2025-07-22T17:01:39.565+0000] {standard_task_runner.py:60} INFO - Started process 199 to run task
+[2025-07-22T17:01:39.567+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'main_pipeline', 'transform_all', 'scheduled__2025-07-21T00:00:00+00:00', '--job-id', '10', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpf3w1ckkb']
+[2025-07-22T17:01:39.569+0000] {standard_task_runner.py:88} INFO - Job 10: Subtask transform_all
+[2025-07-22T17:01:39.599+0000] {task_command.py:423} INFO - Running <TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [running]> on host 2646d8340d4b
+[2025-07-22T17:01:39.645+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='main_pipeline' AIRFLOW_CTX_TASK_ID='transform_all' AIRFLOW_CTX_EXECUTION_DATE='2025-07-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-07-21T00:00:00+00:00'
+[2025-07-22T17:01:39.665+0000] {logging_mixin.py:188} INFO - ✅ Datos transformados (últimos): [{'base': 'MXN', 'target': 'EUR', 'date': '2025-07-22', 'rate': 0.04582, 'previous_rate': None, 'change': None, 'change_pct': None}, {'base': 'MXN', 'target': 'JPY', 'date': '2025-07-22', 'rate': 7.8883, 'previous_rate': None, 'change': None, 'change_pct': None}] ...
+[2025-07-22T17:01:39.688+0000] {logging_mixin.py:188} INFO - Datos transformados (históricos): [{'base': 'EUR', 'target': 'JPY', 'date': '2023-12-29', 'rate': 156.33, 'previous_rate': None, 'change': None, 'change_pct': None}, {'base': 'EUR', 'target': 'MXN', 'date': '2023-12-29', 'rate': 18.7231, 'previous_rate': None, 'change': None, 'change_pct': None}, {'base': 'EUR', 'target': 'USD', 'date': '2023-12-29', 'rate': 1.105, 'previous_rate': None, 'change': None, 'change_pct': None}] ...
+[2025-07-22T17:01:39.701+0000] {logging_mixin.py:188} INFO - ✅ Datos transformados (cripto): [{'crypto': 'bitcoin', 'currency': 'usd', 'rate': 118729, 'date': '2025-07-22'}, {'crypto': 'bitcoin', 'currency': 'eur', 'rate': 101002, 'date': '2025-07-22'}, {'crypto': 'bitcoin', 'currency': 'mxn', 'rate': 2211690, 'date': '2025-07-22'}, {'crypto': 'ethereum', 'currency': 'usd', 'rate': 3720.24, 'date': '2025-07-22'}, {'crypto': 'ethereum', 'currency': 'eur', 'rate': 3164.78, 'date': '2025-07-22'}, {'crypto': 'ethereum', 'currency': 'mxn', 'rate': 69301, 'date': '2025-07-22'}]
+[2025-07-22T17:01:39.712+0000] {logging_mixin.py:188} INFO - ✅ Datos transformados (PIB): [{'country': 'Mexico', 'date': '2024', 'gdp': 1852722885258.11}, {'country': 'Mexico', 'date': '2023', 'gdp': 1793798859343.27}, {'country': 'Mexico', 'date': '2022', 'gdp': 1466464899303.68}]
+[2025-07-22T17:01:39.713+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-07-22T17:01:39.718+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=main_pipeline, task_id=transform_all, execution_date=20250721T000000, start_date=20250722T170139, end_date=20250722T170139
+[2025-07-22T17:01:39.740+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-07-22T17:01:39.755+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-07-22T17:06:02.861+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [queued]>
+[2025-07-22T17:06:02.868+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [queued]>
+[2025-07-22T17:06:02.868+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-07-22T17:06:02.879+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): transform_all> on 2025-07-21 00:00:00+00:00
+[2025-07-22T17:06:02.886+0000] {standard_task_runner.py:60} INFO - Started process 196 to run task
+[2025-07-22T17:06:02.888+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'main_pipeline', 'transform_all', 'scheduled__2025-07-21T00:00:00+00:00', '--job-id', '9', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmp_ophpz89']
+[2025-07-22T17:06:02.890+0000] {standard_task_runner.py:88} INFO - Job 9: Subtask transform_all
+[2025-07-22T17:06:02.927+0000] {task_command.py:423} INFO - Running <TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [running]> on host 4cc1f9709e63
+[2025-07-22T17:06:02.981+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='main_pipeline' AIRFLOW_CTX_TASK_ID='transform_all' AIRFLOW_CTX_EXECUTION_DATE='2025-07-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-07-21T00:00:00+00:00'
+[2025-07-22T17:06:03.001+0000] {logging_mixin.py:188} INFO - ✅ Datos transformados (últimos): [{'base': 'MXN', 'target': 'EUR', 'date': '2025-07-22', 'rate': 0.04582, 'previous_rate': None, 'change': None, 'change_pct': None}, {'base': 'MXN', 'target': 'JPY', 'date': '2025-07-22', 'rate': 7.8883, 'previous_rate': None, 'change': None, 'change_pct': None}] ...
+[2025-07-22T17:06:03.026+0000] {logging_mixin.py:188} INFO - Datos transformados (históricos): [{'base': 'EUR', 'target': 'JPY', 'date': '2023-12-29', 'rate': 156.33, 'previous_rate': None, 'change': None, 'change_pct': None}, {'base': 'EUR', 'target': 'MXN', 'date': '2023-12-29', 'rate': 18.7231, 'previous_rate': None, 'change': None, 'change_pct': None}, {'base': 'EUR', 'target': 'USD', 'date': '2023-12-29', 'rate': 1.105, 'previous_rate': None, 'change': None, 'change_pct': None}] ...
+[2025-07-22T17:06:03.038+0000] {logging_mixin.py:188} INFO - ✅ Datos transformados (cripto): [{'crypto': 'bitcoin', 'currency': 'usd', 'rate': 118747, 'date': '2025-07-22'}, {'crypto': 'bitcoin', 'currency': 'eur', 'rate': 101026, 'date': '2025-07-22'}, {'crypto': 'bitcoin', 'currency': 'mxn', 'rate': 2212024, 'date': '2025-07-22'}, {'crypto': 'ethereum', 'currency': 'usd', 'rate': 3718.0, 'date': '2025-07-22'}, {'crypto': 'ethereum', 'currency': 'eur', 'rate': 3163.14, 'date': '2025-07-22'}, {'crypto': 'ethereum', 'currency': 'mxn', 'rate': 69259, 'date': '2025-07-22'}]
+[2025-07-22T17:06:03.051+0000] {logging_mixin.py:188} INFO - ✅ Datos transformados (PIB): [{'country': 'Mexico', 'date': '2024', 'gdp': 1852722885258.11}, {'country': 'Mexico', 'date': '2023', 'gdp': 1793798859343.27}, {'country': 'Mexico', 'date': '2022', 'gdp': 1466464899303.68}]
+[2025-07-22T17:06:03.051+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-07-22T17:06:03.056+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=main_pipeline, task_id=transform_all, execution_date=20250721T000000, start_date=20250722T170602, end_date=20250722T170603
+[2025-07-22T17:06:03.101+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-07-22T17:06:03.118+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-07-22T17:16:54.297+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [queued]>
+[2025-07-22T17:16:54.304+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [queued]>
+[2025-07-22T17:16:54.304+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-07-22T17:16:54.316+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): transform_all> on 2025-07-21 00:00:00+00:00
+[2025-07-22T17:16:54.322+0000] {standard_task_runner.py:60} INFO - Started process 206 to run task
+[2025-07-22T17:16:54.325+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'main_pipeline', 'transform_all', 'scheduled__2025-07-21T00:00:00+00:00', '--job-id', '8', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmp1bghi5yf']
+[2025-07-22T17:16:54.327+0000] {standard_task_runner.py:88} INFO - Job 8: Subtask transform_all
+[2025-07-22T17:16:54.365+0000] {task_command.py:423} INFO - Running <TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [running]> on host c31d04d11063
+[2025-07-22T17:16:54.426+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='main_pipeline' AIRFLOW_CTX_TASK_ID='transform_all' AIRFLOW_CTX_EXECUTION_DATE='2025-07-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-07-21T00:00:00+00:00'
+[2025-07-22T17:16:54.450+0000] {logging_mixin.py:188} INFO - ✅ Datos transformados (últimos): [{'base': 'MXN', 'target': 'EUR', 'date': '2025-07-22', 'rate': 0.04582, 'previous_rate': None, 'change': None, 'change_pct': None}, {'base': 'MXN', 'target': 'JPY', 'date': '2025-07-22', 'rate': 7.8883, 'previous_rate': None, 'change': None, 'change_pct': None}] ...
+[2025-07-22T17:16:54.479+0000] {logging_mixin.py:188} INFO - Datos transformados (históricos): [{'base': 'EUR', 'target': 'JPY', 'date': '2023-12-29', 'rate': 156.33, 'previous_rate': None, 'change': None, 'change_pct': None}, {'base': 'EUR', 'target': 'MXN', 'date': '2023-12-29', 'rate': 18.7231, 'previous_rate': None, 'change': None, 'change_pct': None}, {'base': 'EUR', 'target': 'USD', 'date': '2023-12-29', 'rate': 1.105, 'previous_rate': None, 'change': None, 'change_pct': None}] ...
+[2025-07-22T17:16:54.493+0000] {logging_mixin.py:188} INFO - ✅ Datos transformados (cripto): [{'crypto': 'bitcoin', 'currency': 'usd', 'rate': 118669, 'date': '2025-07-22'}, {'crypto': 'bitcoin', 'currency': 'eur', 'rate': 100978, 'date': '2025-07-22'}, {'crypto': 'bitcoin', 'currency': 'mxn', 'rate': 2210501, 'date': '2025-07-22'}, {'crypto': 'ethereum', 'currency': 'usd', 'rate': 3702.66, 'date': '2025-07-22'}, {'crypto': 'ethereum', 'currency': 'eur', 'rate': 3150.67, 'date': '2025-07-22'}, {'crypto': 'ethereum', 'currency': 'mxn', 'rate': 68971, 'date': '2025-07-22'}]
+[2025-07-22T17:16:54.509+0000] {logging_mixin.py:188} INFO - ✅ Datos transformados (PIB): [{'country': 'Mexico', 'date': '2024', 'gdp': 1852722885258.11}, {'country': 'Mexico', 'date': '2023', 'gdp': 1793798859343.27}, {'country': 'Mexico', 'date': '2022', 'gdp': 1466464899303.68}]
+[2025-07-22T17:16:54.509+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-07-22T17:16:54.516+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=main_pipeline, task_id=transform_all, execution_date=20250721T000000, start_date=20250722T171654, end_date=20250722T171654
+[2025-07-22T17:16:54.537+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-07-22T17:16:54.554+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-07-22T17:31:02.696+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [queued]>
+[2025-07-22T17:31:02.701+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [queued]>
+[2025-07-22T17:31:02.701+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-07-22T17:31:02.708+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): transform_all> on 2025-07-21 00:00:00+00:00
+[2025-07-22T17:31:02.713+0000] {standard_task_runner.py:60} INFO - Started process 208 to run task
+[2025-07-22T17:31:02.715+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'main_pipeline', 'transform_all', 'scheduled__2025-07-21T00:00:00+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpfmxqb3yd']
+[2025-07-22T17:31:02.717+0000] {standard_task_runner.py:88} INFO - Job 11: Subtask transform_all
+[2025-07-22T17:31:02.744+0000] {task_command.py:423} INFO - Running <TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [running]> on host 289823fc3070
+[2025-07-22T17:31:02.788+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='main_pipeline' AIRFLOW_CTX_TASK_ID='transform_all' AIRFLOW_CTX_EXECUTION_DATE='2025-07-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-07-21T00:00:00+00:00'
+[2025-07-22T17:31:02.800+0000] {taskinstance.py:2698} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/models/taskinstance.py", line 433, in _execute_task
+    result = execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 199, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.8/site-packages/airflow/operators/python.py", line 216, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/src/frankfurter/transform.py", line 125, in transform_all
+    ti.xcom_push(key="transformed_latest", value=latest_data)
+NameError: name 'latest_data' is not defined
+[2025-07-22T17:31:02.805+0000] {taskinstance.py:1138} INFO - Marking task as FAILED. dag_id=main_pipeline, task_id=transform_all, execution_date=20250721T000000, start_date=20250722T173102, end_date=20250722T173102
+[2025-07-22T17:31:02.813+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 11 for task transform_all (name 'latest_data' is not defined; 208)
+[2025-07-22T17:31:02.848+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2025-07-22T17:31:02.862+0000] {taskinstance.py:3280} INFO - 0 downstream tasks scheduled from follow-on schedule check
+[2025-07-22T17:40:46.711+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [queued]>
+[2025-07-22T17:40:46.716+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [queued]>
+[2025-07-22T17:40:46.716+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-07-22T17:40:46.724+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): transform_all> on 2025-07-21 00:00:00+00:00
+[2025-07-22T17:40:46.730+0000] {standard_task_runner.py:60} INFO - Started process 201 to run task
+[2025-07-22T17:40:46.733+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'main_pipeline', 'transform_all', 'scheduled__2025-07-21T00:00:00+00:00', '--job-id', '12', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpr_k8zl_f']
+[2025-07-22T17:40:46.734+0000] {standard_task_runner.py:88} INFO - Job 12: Subtask transform_all
+[2025-07-22T17:40:46.763+0000] {task_command.py:423} INFO - Running <TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [running]> on host 610cf35e4eb3
+[2025-07-22T17:40:46.809+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='main_pipeline' AIRFLOW_CTX_TASK_ID='transform_all' AIRFLOW_CTX_EXECUTION_DATE='2025-07-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-07-21T00:00:00+00:00'
+[2025-07-22T17:40:46.820+0000] {logging_mixin.py:188} INFO - ✅ Datos transformados (últimos): [{'base': 'MXN', 'target': 'EUR', 'date': '2025-07-22', 'rate': 0.04582, 'previous_rate': None, 'change': None, 'change_pct': None}, {'base': 'MXN', 'target': 'JPY', 'date': '2025-07-22', 'rate': 7.8883, 'previous_rate': None, 'change': None, 'change_pct': None}] ...
+[2025-07-22T17:40:46.837+0000] {logging_mixin.py:188} INFO - Datos transformados (históricos): [{'base': 'EUR', 'target': 'JPY', 'date': '2023-12-29', 'rate': 156.33, 'previous_rate': None, 'change': None, 'change_pct': None}, {'base': 'EUR', 'target': 'MXN', 'date': '2023-12-29', 'rate': 18.7231, 'previous_rate': None, 'change': None, 'change_pct': None}, {'base': 'EUR', 'target': 'USD', 'date': '2023-12-29', 'rate': 1.105, 'previous_rate': None, 'change': None, 'change_pct': None}] ...
+[2025-07-22T17:40:46.856+0000] {logging_mixin.py:188} INFO - ✅ Datos transformados (cripto): [{'crypto': 'bitcoin', 'currency': 'usd', 'rate': 119035, 'date': '2025-07-22'}, {'crypto': 'bitcoin', 'currency': 'eur', 'rate': 101342, 'date': '2025-07-22'}, {'crypto': 'bitcoin', 'currency': 'mxn', 'rate': 2218172, 'date': '2025-07-22'}, {'crypto': 'ethereum', 'currency': 'usd', 'rate': 3696.77, 'date': '2025-07-22'}, {'crypto': 'ethereum', 'currency': 'eur', 'rate': 3147.3, 'date': '2025-07-22'}, {'crypto': 'ethereum', 'currency': 'mxn', 'rate': 68888, 'date': '2025-07-22'}]
+[2025-07-22T17:40:46.869+0000] {logging_mixin.py:188} INFO - ✅ Datos transformados (PIB): [{'country': 'Mexico', 'date': '2024', 'gdp': 1852722885258.11}, {'country': 'Mexico', 'date': '2023', 'gdp': 1793798859343.27}, {'country': 'Mexico', 'date': '2022', 'gdp': 1466464899303.68}]
+[2025-07-22T17:40:46.877+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-07-22T17:40:46.883+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=main_pipeline, task_id=transform_all, execution_date=20250721T000000, start_date=20250722T174046, end_date=20250722T174046
+[2025-07-22T17:40:46.904+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-07-22T17:40:46.923+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-07-22T17:47:40.958+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [queued]>
+[2025-07-22T17:47:40.962+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [queued]>
+[2025-07-22T17:47:40.962+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-07-22T17:47:40.969+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): transform_all> on 2025-07-21 00:00:00+00:00
+[2025-07-22T17:47:40.973+0000] {standard_task_runner.py:60} INFO - Started process 204 to run task
+[2025-07-22T17:47:40.975+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'main_pipeline', 'transform_all', 'scheduled__2025-07-21T00:00:00+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmposh9k68a']
+[2025-07-22T17:47:40.977+0000] {standard_task_runner.py:88} INFO - Job 11: Subtask transform_all
+[2025-07-22T17:47:41.003+0000] {task_command.py:423} INFO - Running <TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [running]> on host 17392357f595
+[2025-07-22T17:47:41.043+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='main_pipeline' AIRFLOW_CTX_TASK_ID='transform_all' AIRFLOW_CTX_EXECUTION_DATE='2025-07-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-07-21T00:00:00+00:00'
+[2025-07-22T17:47:41.053+0000] {logging_mixin.py:188} INFO - ✅ Datos transformados (últimos): [{'base': 'MXN', 'target': 'EUR', 'date': '2025-07-22', 'rate': 0.04582, 'previous_rate': None, 'change': None, 'change_pct': None}, {'base': 'MXN', 'target': 'JPY', 'date': '2025-07-22', 'rate': 7.8883, 'previous_rate': None, 'change': None, 'change_pct': None}] ...
+[2025-07-22T17:47:41.070+0000] {logging_mixin.py:188} INFO - Datos transformados (históricos): [{'base': 'EUR', 'target': 'JPY', 'date': '2023-12-29', 'rate': 156.33, 'previous_rate': None, 'change': None, 'change_pct': None}, {'base': 'EUR', 'target': 'MXN', 'date': '2023-12-29', 'rate': 18.7231, 'previous_rate': None, 'change': None, 'change_pct': None}, {'base': 'EUR', 'target': 'USD', 'date': '2023-12-29', 'rate': 1.105, 'previous_rate': None, 'change': None, 'change_pct': None}] ...
+[2025-07-22T17:47:41.087+0000] {logging_mixin.py:188} INFO - ✅ Datos transformados (cripto): [{'crypto': 'bitcoin', 'currency': 'usd', 'rate': 119103, 'date': '2025-07-22'}, {'crypto': 'bitcoin', 'currency': 'eur', 'rate': 101400, 'date': '2025-07-22'}, {'crypto': 'bitcoin', 'currency': 'mxn', 'rate': 2219376, 'date': '2025-07-22'}, {'crypto': 'ethereum', 'currency': 'usd', 'rate': 3696.43, 'date': '2025-07-22'}, {'crypto': 'ethereum', 'currency': 'eur', 'rate': 3147.0, 'date': '2025-07-22'}, {'crypto': 'ethereum', 'currency': 'mxn', 'rate': 68880, 'date': '2025-07-22'}]
+[2025-07-22T17:47:41.097+0000] {logging_mixin.py:188} INFO - ✅ Datos transformados (PIB): [{'country': 'Mexico', 'date': '2024', 'gdp': 1852722885258.11}, {'country': 'Mexico', 'date': '2023', 'gdp': 1793798859343.27}, {'country': 'Mexico', 'date': '2022', 'gdp': 1466464899303.68}]
+[2025-07-22T17:47:41.103+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-07-22T17:47:41.108+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=main_pipeline, task_id=transform_all, execution_date=20250721T000000, start_date=20250722T174740, end_date=20250722T174741
+[2025-07-22T17:47:41.148+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-07-22T17:47:41.162+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
+[2025-07-22T18:22:05.801+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [queued]>
+[2025-07-22T18:22:05.805+0000] {taskinstance.py:1956} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [queued]>
+[2025-07-22T18:22:05.806+0000] {taskinstance.py:2170} INFO - Starting attempt 1 of 1
+[2025-07-22T18:22:05.812+0000] {taskinstance.py:2191} INFO - Executing <Task(PythonOperator): transform_all> on 2025-07-21 00:00:00+00:00
+[2025-07-22T18:22:05.817+0000] {standard_task_runner.py:60} INFO - Started process 203 to run task
+[2025-07-22T18:22:05.820+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'main_pipeline', 'transform_all', 'scheduled__2025-07-21T00:00:00+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/main_pipeline.py', '--cfg-path', '/tmp/tmpcq56ufhm']
+[2025-07-22T18:22:05.821+0000] {standard_task_runner.py:88} INFO - Job 11: Subtask transform_all
+[2025-07-22T18:22:05.848+0000] {task_command.py:423} INFO - Running <TaskInstance: main_pipeline.transform_all scheduled__2025-07-21T00:00:00+00:00 [running]> on host 44387cd0f964
+[2025-07-22T18:22:05.888+0000] {taskinstance.py:2480} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='***' AIRFLOW_CTX_DAG_ID='main_pipeline' AIRFLOW_CTX_TASK_ID='transform_all' AIRFLOW_CTX_EXECUTION_DATE='2025-07-21T00:00:00+00:00' AIRFLOW_CTX_TRY_NUMBER='1' AIRFLOW_CTX_DAG_RUN_ID='scheduled__2025-07-21T00:00:00+00:00'
+[2025-07-22T18:22:05.898+0000] {logging_mixin.py:188} INFO - ✅ Datos transformados (últimos): [{'base': 'MXN', 'target': 'EUR', 'date': '2025-07-22', 'rate': 0.04582, 'previous_rate': None, 'change': None, 'change_pct': None}, {'base': 'MXN', 'target': 'JPY', 'date': '2025-07-22', 'rate': 7.8883, 'previous_rate': None, 'change': None, 'change_pct': None}] ...
+[2025-07-22T18:22:05.914+0000] {logging_mixin.py:188} INFO - Datos transformados (históricos): [{'base': 'EUR', 'target': 'JPY', 'date': '2023-12-29', 'rate': 156.33, 'previous_rate': None, 'change': None, 'change_pct': None}, {'base': 'EUR', 'target': 'MXN', 'date': '2023-12-29', 'rate': 18.7231, 'previous_rate': None, 'change': None, 'change_pct': None}, {'base': 'EUR', 'target': 'USD', 'date': '2023-12-29', 'rate': 1.105, 'previous_rate': None, 'change': None, 'change_pct': None}] ...
+[2025-07-22T18:22:05.931+0000] {logging_mixin.py:188} INFO - ✅ Datos transformados (cripto): [{'crypto': 'bitcoin', 'currency': 'usd', 'rate': 119337, 'date': '2025-07-22'}, {'crypto': 'bitcoin', 'currency': 'eur', 'rate': 101605, 'date': '2025-07-22'}, {'crypto': 'bitcoin', 'currency': 'mxn', 'rate': 2225898, 'date': '2025-07-22'}, {'crypto': 'ethereum', 'currency': 'usd', 'rate': 3695.99, 'date': '2025-07-22'}, {'crypto': 'ethereum', 'currency': 'eur', 'rate': 3146.82, 'date': '2025-07-22'}, {'crypto': 'ethereum', 'currency': 'mxn', 'rate': 68938, 'date': '2025-07-22'}]
+[2025-07-22T18:22:05.940+0000] {logging_mixin.py:188} INFO - ✅ Datos transformados (PIB): [{'country': 'Mexico', 'date': '2024', 'gdp': 1852722885258.11}, {'country': 'Mexico', 'date': '2023', 'gdp': 1793798859343.27}, {'country': 'Mexico', 'date': '2022', 'gdp': 1466464899303.68}]
+[2025-07-22T18:22:05.946+0000] {python.py:201} INFO - Done. Returned value was: None
+[2025-07-22T18:22:05.951+0000] {taskinstance.py:1138} INFO - Marking task as SUCCESS. dag_id=main_pipeline, task_id=transform_all, execution_date=20250721T000000, start_date=20250722T182205, end_date=20250722T182205
+[2025-07-22T18:22:05.992+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 0
+[2025-07-22T18:22:06.007+0000] {taskinstance.py:3280} INFO - 1 downstream tasks scheduled from follow-on schedule check
