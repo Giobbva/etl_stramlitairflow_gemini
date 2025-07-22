@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🚀 ETL Financial Pipeline with Airflow + MongoDB + Gemini + Streamlit
 
 This project runs a complete ETL pipeline that extracts financial and economic data from public APIs, processes it with Airflow, stores it in MongoDB, analyzes it using Google's Gemini API, and visualizes the results with Streamlit.
@@ -130,3 +131,7 @@ Dashboard  | Reads from `etl_processed` and `etl_summary` for display      | Bot
 📝 Notes
 
 This architecture supports real-time or batch extensions and is ideal for data engineering practice, academic use, or rapid prototyping of data pipelines.
+=======
+# etl_stramlitairflow_gemini
+Giovanni Rafael Soriano Pacheco project where I used dags with airflow and it is charged to streamlit by mongo
+>>>>>>> 7fd6d6be8c97dc74eba2851806e9e1e8cb84584b
