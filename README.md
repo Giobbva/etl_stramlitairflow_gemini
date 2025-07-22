@@ -40,7 +40,7 @@ project/
 
 1. Clone the repository
 
-    git clone https://github.com/youruser/etl-finance-project.git
+    git clone https://github.com/Giobbva/etl_stramlitairflow_gemini.git
     
     cd etl-finance-project/project
 
@@ -131,6 +131,7 @@ Dashboard  | Reads from `etl_processed` and `etl_summary` for display      | Bot
 📝 Notes
 
 This architecture supports real-time or batch extensions and is ideal for data engineering practice, academic use, or rapid prototyping of data pipelines.
+
 =======
 # etl_stramlitairflow_gemini
 Giovanni Rafael Soriano Pacheco project where I used dags with airflow and it is charged to streamlit by mongo
