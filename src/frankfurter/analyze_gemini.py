@@ -8,21 +8,33 @@ def analyze_with_gemini():
     mongo_uri = Variable.get("mongo_uri", default_var="mongodb://root:example@mongo:27017/admin")
     client = MongoClient(mongo_uri)
     db = client["etl_processed"]
-    
-    # Leer últimos documentos de 'forex_latest'
-    latest_data = list(db["forex_latest"].find().sort("date", -1).limit(10))
 
-    if not latest_data:
-        print("❌ No se encontró información en 'forex_latest'")
-        return
-
-    # Crear prompt para Gemini
     prompt_lines = [
-        "Analiza los siguientes cambios de tipo de cambio entre monedas y genera un resumen claro, "
-        "indicando las monedas más volátiles y cualquier tendencia observada:\n"
+        "Analiza la siguiente información financiera de tipo de cambio, criptomonedas y PIB para generar un resumen comparativo e identificar tendencias y anomalías:\n"
     ]
-    for item in latest_data:
-        line = f"{item['base']} → {item['target']}: {item['rate']} ({item.get('change_pct', 'N/A')}% cambio)"
+
+    # FOREX LATEST
+    latest = list(db["forex_latest"].find().sort("date", -1).limit(5))
+    for item in latest:
+        line = f"[FOREX] {item['base']} → {item['target']}: {item['rate']} ({item.get('change_pct', 'N/A')}% cambio)"
+        prompt_lines.append(line)
+
+    # FOREX HISTÓRICO
+    historical = list(db["forex_history"].find().sort("date", -1).limit(5))
+    for item in historical:
+        line = f"[HISTORICAL] {item['base']} → {item['target']}: {item['rate']} ({item.get('change_pct', 'N/A')}% cambio)"
+        prompt_lines.append(line)
+
+    # CRYPTO
+    crypto = list(db["crypto_rates"].find().sort("date", -1).limit(5))
+    for item in crypto:
+        line = f"[CRYPTO] {item['crypto']} → {item['currency']}: {item['rate']} ({item['date']})"
+        prompt_lines.append(line)
+
+    # GDP
+    gdp = list(db["worldbank_gdp"].find().sort("date", -1).limit(5))
+    for item in gdp:
+        line = f"[GDP] {item['country']}: {item['gdp']} USD en {item['date']}"
         prompt_lines.append(line)
 
     prompt_text = "\n".join(prompt_lines)
