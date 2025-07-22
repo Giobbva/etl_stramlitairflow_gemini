@@ -1,1 +1,5 @@
+# Ignorar todo el contenido de la carpeta logs/
 logs/*
+
+# ¡Pero NO ignores esta carpeta si tiene un archivo especial!
+!logs/.gitkeep
